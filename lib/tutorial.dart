@@ -10,7 +10,7 @@ class HowToPlayScreen extends StatelessWidget {
         children: <Widget>[
           Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +19,7 @@ class HowToPlayScreen extends StatelessWidget {
                   Text(
                     'How to Play',
                     style: TextStyle(
-                      fontSize: 32.0,
+                      fontSize: 40.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.white, // Ensures text is white
                     ),
@@ -27,10 +27,16 @@ class HowToPlayScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                    'Vestibulum vehicula ex nec sem facilisis, ac pretium purus pulvinar.',
+                    'Welcome to HueFinder!'
+                    '\nThis game tests your ability to recognize RGB values and how they interact with each other. '
+                    'When you press play, the game will present you with an RGB value, and your task is to match it with one of the squares provided. '
+                    'Remember, RGB stands for Red, Green, and Blue. '
+                    'The higher the value for a color, the closer it is to that color. '
+                    'When combined, they create white, and the absence of all colors results in black. '
+                    'You have three lives, so try to get as many correct as you can.'
+                    '\nGood luck!',
                     style: TextStyle(
-                      fontSize: 16.0,
+                      fontSize: 24.0,
                       color: Colors.white70, // Ensures text is white
                     ),
                     textAlign: TextAlign.left,
@@ -40,19 +46,19 @@ class HowToPlayScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 16.0,
-            right: 16.0,
+            bottom: 32.0,
+            right: 32.0,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey[800], // Button background
-                foregroundColor: Colors.white, // Icon color
+                backgroundColor: Colors.grey[800], // Button background color
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Increased padding
               ),
               onPressed: () {
                 Navigator.pop(context); // Pops the current screen
               },
               child: const Icon(
                 Icons.arrow_back,
-                size: 24.0,
+                size: 32.0, // Increased icon size
                 color: Colors.white, // Ensures icon is white
               ),
             ),

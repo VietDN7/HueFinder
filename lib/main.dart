@@ -15,10 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'HueFinder',
       theme: ThemeData(
         brightness: Brightness.dark, // Ensures dark mode
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF1E1E1E), // Base color for dark mode
-          brightness: Brightness.dark,
-        ),
         iconTheme: const IconThemeData(color: Colors.white), // Global icon color
         useMaterial3: true,
       ),
@@ -40,16 +36,41 @@ class HomePage extends StatelessWidget {
             const Text(
               'HueFinder',
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 64,
                 fontWeight: FontWeight.bold,
                 color: Colors.white, // Ensure title text is white
               ),
+            ),
+            const SizedBox(height: 20),
+            // Row of three squares with individual gradients
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(3, (index) {
+                // Define a gradient color for each square based on its index
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  width: 75,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: index == 0
+                          ? [Colors.red, Colors.orange] // First square: Blue to Green
+                          : index == 1
+                              ? [Colors.yellow, Colors.green] // Second square: Purple to Red
+                              : [Colors.blue, Colors.purple], // Third square: Orange to Yellow
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                );
+              }),
             ),
             const SizedBox(height: 40),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey[800], // Button background color
-                foregroundColor: Colors.white, // Icon/text color
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40), // Increase button padding
               ),
               onPressed: () {
                 Navigator.push(
@@ -59,7 +80,7 @@ class HomePage extends StatelessWidget {
               },
               child: const Icon(
                 Icons.play_arrow, // Icon for "Play"
-                size: 32,
+                size: 48, // Increased icon size
                 color: Colors.white, // Explicitly set the icon color to white
               ),
             ),
@@ -67,7 +88,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey[800], // Button background color
-                foregroundColor: Colors.white, // Icon/text color
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40), // Increase button padding
               ),
               onPressed: () {
                 Navigator.push(
@@ -76,8 +97,8 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: const Icon(
-                Icons.help_outline, // Icon for "How To Play"
-                size: 32,
+                Icons.question_mark, // Icon for "How To Play"
+                size: 48, // Increased icon size
                 color: Colors.white, // Explicitly set the icon color to white
               ),
             ),
