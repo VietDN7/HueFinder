@@ -36,7 +36,7 @@ class HowToPlayScreen extends StatelessWidget {
                     'You have three lives, so try to get as many correct as you can.'
                     '\nGood luck!',
                     style: TextStyle(
-                      fontSize: 24.0,
+                      fontSize: 20.0,
                       color: Colors.white70, // Ensures text is white
                     ),
                     textAlign: TextAlign.left,
