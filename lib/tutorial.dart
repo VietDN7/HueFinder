@@ -46,21 +46,21 @@ class HowToPlayScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 48.0,
+            bottom: 32.0,
             left: 0, // Align to the left edge
             right: 0, // Align to the right edge
             child: Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey[800], // Button background color
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Increased padding
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30), // Increased padding
                 ),
                 onPressed: () {
                   Navigator.pop(context); // Pops the current screen
                 },
                 child: const Icon(
                   Icons.arrow_back,
-                  size: 32.0, // Increased icon size
+                  size: 16.0, // Increased icon size
                   color: Colors.white, // Ensures icon is white
                 ),
               ),
