@@ -37,7 +37,7 @@ class HowToPlayScreen extends StatelessWidget {
                     '\nGood luck!',
                     style: TextStyle(
                       fontSize: 20.0,
-                      color: Colors.white70, // Ensures text is white
+                      color: Colors.white70, // Slightly lighter text
                     ),
                     textAlign: TextAlign.left,
                   ),
@@ -53,14 +53,14 @@ class HowToPlayScreen extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey[800], // Button background color
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30), // Increased padding
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                 ),
                 onPressed: () {
                   Navigator.pop(context); // Pops the current screen
                 },
                 child: const Icon(
                   Icons.arrow_back,
-                  size: 16.0, // Increased icon size
+                  size: 16.0,
                   color: Colors.white, // Ensures icon is white
                 ),
               ),

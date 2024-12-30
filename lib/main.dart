@@ -54,10 +54,10 @@ class HomePage extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: index == 0
-                          ? [Colors.red, Colors.orange] // First square: Blue to Green
+                          ? [Colors.red, Colors.orange]
                           : index == 1
-                              ? [Colors.yellow, Colors.green] // Second square: Purple to Red
-                              : [Colors.blue, Colors.purple], // Third square: Orange to Yellow
+                              ? [Colors.yellow, Colors.green]
+                              : [Colors.blue, Colors.purple],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey[800], // Button background color
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40), // Increase button padding
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
               ),
               onPressed: () {
                 Navigator.push(
@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
               },
               child: const Icon(
                 Icons.play_arrow, // Icon for "Play"
-                size: 48, // Increased icon size
+                size: 48,
                 color: Colors.white, // Explicitly set the icon color to white
               ),
             ),
@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey[800], // Button background color
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40), // Increase button padding
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
               ),
               onPressed: () {
                 Navigator.push(
@@ -98,7 +98,7 @@ class HomePage extends StatelessWidget {
               },
               child: const Icon(
                 Icons.question_mark, // Icon for "How To Play"
-                size: 48, // Increased icon size
+                size: 48,
                 color: Colors.white, // Explicitly set the icon color to white
               ),
             ),
