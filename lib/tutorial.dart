@@ -2,28 +2,25 @@ import 'package:flutter/material.dart';
 
 class HowToPlayScreen extends StatelessWidget {
   const HowToPlayScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Center(
-            child: Padding(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,  // This ensures left alignment
                 children: const [
                   Text(
                     'How to Play',
                     style: TextStyle(
                       fontSize: 40.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white, // Ensures text is white
+                      color: Colors.white,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16.0),
                   Text(
@@ -36,37 +33,30 @@ class HowToPlayScreen extends StatelessWidget {
                     'You have three lives, so try to get as many correct as you can.'
                     '\nGood luck!',
                     style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white70, // Slightly lighter text
+                      fontSize: 24.0,
+                      color: Colors.white70,
                     ),
-                    textAlign: TextAlign.left,
                   ),
                 ],
               ),
             ),
-          ),
-          Positioned(
-            bottom: 32.0,
-            left: 0, // Align to the left edge
-            right: 0, // Align to the right edge
-            child: Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[800], // Button background color
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-                ),
-                onPressed: () {
-                  Navigator.pop(context); // Pops the current screen
-                },
-                child: const Icon(
-                  Icons.arrow_back,
-                  size: 16.0,
-                  color: Colors.white, // Ensures icon is white
-                ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey[800],
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(
+                Icons.arrow_back,
+                size: 48,
+                color: Colors.white,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

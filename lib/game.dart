@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'over.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
@@ -13,13 +14,14 @@ class GameScreenState extends State<GameScreen> {
   late int targetSquareIndex;
   late List<Color> squareColors;
   String feedbackText = '';
-  int lives = 3; // Lives counter
-  int score = 0; // Score counter
+  int lives = 3;
+  int score = 0;
 
-  // Consistent text style
+  // Updated text style to match other screens
   static const TextStyle textStyle = TextStyle(
     fontSize: 36,
     fontWeight: FontWeight.bold,
+    color: Colors.white,  // Added explicit white color
   );
 
   @override
@@ -56,37 +58,37 @@ class GameScreenState extends State<GameScreen> {
     setState(() {
       if (index == targetSquareIndex) {
         feedbackText = 'Correct!';
-        score++; // Increment score on correct guess
+        score++;
         Future.delayed(const Duration(milliseconds: 2500), () {
           if (mounted) {
             setState(() {
-              feedbackText = ''; // Clear feedback
-              initializeGame(); // Reset the game
+              feedbackText = '';
+              initializeGame();
             });
           }
         });
       } else {
         feedbackText = 'Incorrect.';
-        lives--; // Decrement lives on incorrect guess
+        lives--;
 
         if (lives <= 0) {
-          lives = 0; // Ensure lives do not go negative
+          lives = 0;
           Future.delayed(const Duration(milliseconds: 2500), () {
             if (mounted) {
-              setState(() {
-                feedbackText = ''; // Clear feedback
-                lives = 3; // Reset lives
-                score = 0; // Reset score
-                initializeGame(); // Reset the game
-              });
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => OverScreen(finalScore: score),
+                ),
+              );
             }
           });
         } else {
           Future.delayed(const Duration(milliseconds: 2500), () {
             if (mounted && feedbackText == 'Incorrect.') {
               setState(() {
-                feedbackText = ''; // Clear feedback for incorrect when lives remain
-                initializeGame(); // Reset the game
+                feedbackText = '';
+                initializeGame();
               });
             }
           });
@@ -119,7 +121,7 @@ class GameScreenState extends State<GameScreen> {
                     3,
                     (index) => Icon(
                       Icons.favorite,
-                      color: index < lives ? Colors.red : Colors.grey, // Red if life is active, gray otherwise
+                      color: index < lives ? Colors.red : Colors.grey,
                       size: 32.0,
                     ),
                   ),
@@ -127,7 +129,6 @@ class GameScreenState extends State<GameScreen> {
               ),
               LayoutBuilder(
                 builder: (context, constraints) {
-                  // Calculate grid size based on available width
                   double gridSize = constraints.maxWidth;
                   return SizedBox(
                     width: gridSize,
