@@ -16,12 +16,12 @@ class GameScreenState extends State<GameScreen> {
   String feedbackText = '';
   int lives = 3;
   int score = 0;
+  bool isAcceptingInput = true;  // New flag to track input state
 
-  // Updated text style to match other screens
   static const TextStyle textStyle = TextStyle(
     fontSize: 36,
     fontWeight: FontWeight.bold,
-    color: Colors.white,  // Added explicit white color
+    color: Colors.white,
   );
 
   @override
@@ -37,6 +37,7 @@ class GameScreenState extends State<GameScreen> {
     Color targetColor = Color.fromRGBO(r, g, b, 1.0);
     targetSquareIndex = random.nextInt(9);
     feedbackText = '';
+    isAcceptingInput = true;  // Reset input state
     squareColors = List.generate(9, (index) {
       if (index == targetSquareIndex) {
         return targetColor;
@@ -55,7 +56,13 @@ class GameScreenState extends State<GameScreen> {
   }
 
   void onSquareTap(int index) {
+    // Only process tap if accepting input
+    if (!isAcceptingInput) return;
+
     setState(() {
+      // Disable input immediately
+      isAcceptingInput = false;
+      
       if (index == targetSquareIndex) {
         feedbackText = 'Correct!';
         score++;

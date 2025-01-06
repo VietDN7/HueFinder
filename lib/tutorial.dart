@@ -17,7 +17,7 @@ class HowToPlayScreen extends StatelessWidget {
                   Text(
                     'How to Play',
                     style: TextStyle(
-                      fontSize: 40.0,
+                      fontSize: 36.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -33,7 +33,7 @@ class HowToPlayScreen extends StatelessWidget {
                     'You have three lives, so try to get as many correct as you can.'
                     '\nGood luck!',
                     style: TextStyle(
-                      fontSize: 24.0,
+                      fontSize: 20.0,
                       color: Colors.white70,
                     ),
                   ),
@@ -44,14 +44,14 @@ class HowToPlayScreen extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey[800],
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                padding: const EdgeInsets.symmetric(vertical: 7.5, horizontal: 30),
               ),
               onPressed: () {
                 Navigator.pop(context);
               },
               child: const Icon(
                 Icons.arrow_back,
-                size: 48,
+                size: 36,
                 color: Colors.white,
               ),
             ),
