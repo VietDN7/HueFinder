@@ -13,13 +13,14 @@ class GameScreenState extends State<GameScreen> {
   late int r, g, b;
   late int targetSquareIndex;
   late List<Color> squareColors;
+  late List<bool> squareVisibility;  // New list to track visibility
   String feedbackText = '';
   int lives = 3;
   int score = 0;
-  bool isAcceptingInput = true;  // New flag to track input state
+  bool isAcceptingInput = true;
 
   static const TextStyle textStyle = TextStyle(
-    fontSize: 36,
+    fontSize: 32,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
@@ -37,7 +38,8 @@ class GameScreenState extends State<GameScreen> {
     Color targetColor = Color.fromRGBO(r, g, b, 1.0);
     targetSquareIndex = random.nextInt(9);
     feedbackText = '';
-    isAcceptingInput = true;  // Reset input state
+    isAcceptingInput = true;
+    squareVisibility = List.generate(9, (_) => true);  // Initialize all squares as visible
     squareColors = List.generate(9, (index) {
       if (index == targetSquareIndex) {
         return targetColor;
@@ -56,16 +58,18 @@ class GameScreenState extends State<GameScreen> {
   }
 
   void onSquareTap(int index) {
-    // Only process tap if accepting input
     if (!isAcceptingInput) return;
 
     setState(() {
-      // Disable input immediately
       isAcceptingInput = false;
       
       if (index == targetSquareIndex) {
         feedbackText = 'Correct!';
         score++;
+        // Make all squares the correct color
+        Color correctColor = squareColors[targetSquareIndex];
+        squareColors = List.generate(9, (_) => correctColor);
+        
         Future.delayed(const Duration(milliseconds: 2500), () {
           if (mounted) {
             setState(() {
@@ -77,6 +81,9 @@ class GameScreenState extends State<GameScreen> {
       } else {
         feedbackText = 'Incorrect.';
         lives--;
+        
+        // Hide all squares except the correct one
+        squareVisibility = List.generate(9, (i) => i == targetSquareIndex);
 
         if (lives <= 0) {
           lives = 0;
@@ -152,10 +159,13 @@ class GameScreenState extends State<GameScreen> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () => onSquareTap(index),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: squareColors[index],
-                              borderRadius: BorderRadius.circular(10.0),
+                          child: Opacity(
+                            opacity: squareVisibility[index] ? 1.0 : 0.0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: squareColors[index],
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
                             ),
                           ),
                         );
