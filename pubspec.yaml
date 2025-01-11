@@ -1,5 +1,5 @@
 name: huefinder
-description: "A new Flutter project."
+description: "A color matching game built with Flutter that teaches RGB color theory through engaging gameplay."
 publish_to: 'none'
 
 version: 1.0.0+1

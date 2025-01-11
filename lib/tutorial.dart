@@ -12,7 +12,7 @@ class HowToPlayScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,  // This ensures left alignment
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
                     'How to Play',

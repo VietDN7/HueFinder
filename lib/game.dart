@@ -13,7 +13,7 @@ class GameScreenState extends State<GameScreen> {
   late int r, g, b;
   late int targetSquareIndex;
   late List<Color> squareColors;
-  late List<bool> squareVisibility;  // New list to track visibility
+  late List<bool> squareVisibility;
   String feedbackText = '';
   int lives = 3;
   int score = 0;
