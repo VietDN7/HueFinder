@@ -61,12 +61,11 @@ The tutorial explains:
 ### Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/huefinder.git
+git clone https://github.com/VietDN7/HueFinder.git
 ```
 
 2. Install dependencies:
 ```bash
-cd huefinder
 flutter pub get
 ```
 
